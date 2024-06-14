@@ -1,7 +1,26 @@
 ---
-title: "Mass Tracts"
+title: "Mass Census Tracts"
 author: "Krisha Khokale"
 format: html
+execute: 
+  echo: false
 ---
 
+```{r}
+#| message: false
+#| label: setup
+
+library(tidyverse)
+```
+
+```{r}
+mass_census <- read_csv("mass-tracts.csv", show_col_types = FALSE)
+```
+
+```{r}
+mass_census |>
+  drop_na() |> 
+  ggplot(aes(x = med_income, fill = race)) + 
+  geom_density(alpha = 0.5, adjust = 2)
+```
 
